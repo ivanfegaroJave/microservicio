@@ -1,0 +1,16 @@
+server:
+  port: 9086
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/neoris?useSSL=false&serverTimezone=UTC
+    username: root
+    password: 123456789
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+
+
