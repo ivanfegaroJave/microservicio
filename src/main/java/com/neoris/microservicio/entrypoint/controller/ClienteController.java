@@ -43,7 +43,7 @@ public class ClienteController {
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity <UsuarioDao> updateClient(@PathVariable(Constants.ID) Long id ,
-                                                    @RequestBody Cliente cliente ) {
+                                                    @RequestBody  Cliente cliente ) {
         if (cliente == null) {
             throw new ValidationException(Constants.NOT_VALID);
         } else {

@@ -39,5 +39,9 @@ public class CuentaDao implements Serializable {
     private String status;
 
 
+    @Column(name = "ID_USUARIO")
+    private String usuario;
+
+
 
 }

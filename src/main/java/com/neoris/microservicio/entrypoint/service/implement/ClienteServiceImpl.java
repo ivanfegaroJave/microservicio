@@ -41,8 +41,7 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public ResponseEntity<UsuarioDao> updateClient(Long id, Cliente cliente) {
 
-        UsuarioDao user = usuarioRepository.findByIdUser(id)
-                .orElseThrow(()-> new ValidationException("Client not exist with id: " + id));
+        UsuarioDao user = findUser(id);
         if(cliente.getNombre() != null)
             user.setNames(cliente.getNombre());
         if(cliente.getEdad()!= null)
@@ -61,10 +60,13 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     public ResponseEntity<UsuarioDao> deleteClient(Long id) {
-
-        UsuarioDao user = usuarioRepository.findByIdUser(id)
-                .orElseThrow(()-> new ValidationException("Client not exist with id: " + id));
+        UsuarioDao user = findUser(id);
         usuarioRepository.delete(user);
         return ResponseEntity.ok(user);
+    }
+
+    public UsuarioDao findUser(Long id){
+       return usuarioRepository.findByIdUser(id)
+                .orElseThrow(()-> new ValidationException("Client not exist with id: " + id));
     }
 }
